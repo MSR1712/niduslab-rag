@@ -1,0 +1,97 @@
+:root {
+  --purple: #6d28d9;
+  --bg: #f7f6fb;
+  --card: #ffffff;
+  --border: #e3e0ee;
+  --text: #1f1b2e;
+  --muted: #6b6478;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+header {
+  padding: 24px 32px 8px;
+}
+
+header h1 { margin: 0; font-size: 1.5rem; }
+.subtitle { color: var(--muted); margin-top: 4px; }
+
+main {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 16px 24px 48px;
+}
+
+#upload-section, #controls {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 16px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+button {
+  background: var(--purple);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 16px;
+  cursor: pointer;
+  font-weight: 600;
+}
+button:hover { opacity: 0.9; }
+
+#chat {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+#messages {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-height: 60vh;
+  overflow-y: auto;
+  margin-bottom: 12px;
+}
+
+.msg { padding: 10px 14px; border-radius: 10px; line-height: 1.45; }
+.msg.user { background: #efeafb; align-self: flex-end; max-width: 80%; }
+.msg.answer { background: #f2f2f7; }
+
+.sources {
+  margin-top: 8px;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+.source-item {
+  border-left: 3px solid var(--purple);
+  padding: 4px 10px;
+  margin-top: 6px;
+  background: #faf9fd;
+}
+.source-item .meta { font-weight: 600; color: var(--text); }
+
+#ask-form { display: flex; gap: 8px; }
+#question-input {
+  flex: 1;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  font-size: 1rem;
+}
+
+#upload-status { color: var(--muted); font-size: 0.9rem; }

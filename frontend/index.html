@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Document Intelligence — RAG Demo</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>📄 Document Intelligence</h1>
+    <p class="subtitle">Upload a PDF/TXT, then ask questions with cited sources.</p>
+  </header>
+
+  <main>
+    <section id="upload-section">
+      <input type="file" id="file-input" accept=".pdf,.txt" />
+      <button id="upload-btn">Upload &amp; Index</button>
+      <span id="upload-status"></span>
+    </section>
+
+    <section id="controls" hidden>
+      <label>Search mode:
+        <select id="search-mode">
+          <option value="hybrid" selected>Hybrid (semantic + keyword)</option>
+          <option value="semantic">Semantic only</option>
+          <option value="keyword">Keyword only</option>
+        </select>
+      </label>
+      <label><input type="checkbox" id="stream-toggle" checked /> Stream response</label>
+    </section>
+
+    <section id="chat" hidden>
+      <div id="messages"></div>
+      <form id="ask-form">
+        <input type="text" id="question-input" placeholder="Ask a question about the document..." autocomplete="off" />
+        <button type="submit">Ask</button>
+      </form>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
