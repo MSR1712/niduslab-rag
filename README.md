@@ -90,7 +90,7 @@ cp .env.example .env
 # edit .env and paste your key into GEMINI_API_KEY
 ```
 
-### 2a. Run with Docker (recommended, matches Bonus 5)
+### 2a. Run with Docker
 ```bash
 docker-compose up --build
 ```
@@ -115,7 +115,7 @@ static files).
 2. Ask a question. Toggle "Stream response" and the search mode
    (hybrid / semantic / keyword) to compare behavior.
 
-### 4. Run the evaluation harness (Bonus 3)
+### 4. Run the evaluation harness 
 With the server running and a document already uploaded (grab the
 `doc_id` from the upload response or the browser network tab):
 ```bash
@@ -132,18 +132,3 @@ evaluate against a different document (format: a JSON list of
 Tested end-to-end locally (upload → chunk → embed → hybrid retrieval →
 Gemini generation → streaming → source attribution) against the
 assessment PDF itself, as well as via `docker-compose up --build`.
-
-## Known limitations / what I'd improve with more time
-
-- Conversation memory is in-process (a Python dict), so it doesn't
-  survive a server restart and won't work if you scale to multiple
-  backend workers — I'd move it to Redis for anything beyond a demo.
-- The hallucination metric is a token-overlap heuristic, not an
-  LLM-as-judge; it's a fast, zero-cost proxy but a proper eval would use
-  a second model call to grade groundedness on a rubric.
-- Chunking is character-window based with sentence-boundary snapping,
-  not a semantic/topic-based splitter — reasonable for this scope, but a
-  larger system would consider recursive or embedding-based chunking for
-  long, structurally complex documents.
-- No authentication/rate-limiting — out of scope for the assessment but
-  would be necessary before any real deployment.
